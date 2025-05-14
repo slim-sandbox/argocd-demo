@@ -8,7 +8,7 @@ spec:
   project: default
   source:
     path: applications
-    repoURL: https://github.com/Kento555/Guestbook.git
+    repoURL: https://github.com/Kento555/Guestbook
     targetRevision: HEAD
   destination:
     namespace: ws-ns
