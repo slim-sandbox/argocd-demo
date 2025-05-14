@@ -1,29 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
- name: ws-guestbook
- finalizers:
- - resources-finalizer.argocd.argoproj.io
+  name: ws-guestbook
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
- project: default
- sources:
- - repoURL: registry-1.docker.io/bitnamicharts
-   chart: nginx
-   targetRevision: 19.0.2
-   helm:
-     releaseName: nginx-hc
-     valueFiles:
-     - $values/manifests/ws-guestbook/values.yaml
- - repoURL: https://github.com/Kento555/Guestbook.git
-   targetRevision: HEAD
-   ref: values
- destination:
-   namespace: ws-ns
-   server: "https://kubernetes.default.svc"
- syncPolicy:
-   syncOptions:
-   - CreateNamespace=true
-   automated:
-     prune: true
-     selfHeal: true
-
+  project: default
+  source:
+    path: applications
+    repoURL: https://github.com/Kento555/Guestbook.git
+    targetRevision: HEAD
+  destination:
+    namespace: ws-ns
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
