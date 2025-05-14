@@ -1,28 +1,28 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: agusjuli-nginx-hc
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+ name: agusjuli-nginx-hc
+ finalizers:
+ - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
-  sources:
-    - repoURL: registry-1.docker.io/bitnamicharts
-      chart: nginx
-      targetRevision: 19.0.2
-      helm:
-        releaseName: nginx-hc
-        valueFiles:
-          - $values/manifests/agusjuli-nginx-hc/values.yaml
-    - repoURL: https://github.com/agusjuli/argocd-demo.git
-      targetRevision: main
-      ref: values
-  destination:
-    namespace: agusjuli-ns
-    server: "https://kubernetes.default.svc"
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
+ project: default
+ sources:
+ - repoURL: registry-1.docker.io/bitnamicharts
+   chart: nginx
+   targetRevision: 19.0.2
+   helm:
+     releaseName: nginx-hc
+     valueFiles:
+     - $values/manifests/<name>-nginx-hc/values.yaml
+ - repoURL: https://github.com/slim-sandbox/argocd-demo.git
+   targetRevision: HEAD
+   ref: values
+ destination:
+   namespace: agusjuli-ns
+   server: "https://kubernetes.default.svc"
+ syncPolicy:
+   syncOptions:
+   - CreateNamespace=true
+   automated:
+     prune: true
+     selfHeal: true
