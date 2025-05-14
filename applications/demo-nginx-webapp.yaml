@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-nginx-webapp
+  name: chrisy-demo-nginx-webapp
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
