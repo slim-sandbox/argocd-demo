@@ -1,23 +1,13 @@
-image:
-  repository: bitnami/nginx
-  tag: 1.25.3-debian-11-r19
+commonLabels:
+  label-for: demostration-only
 
-service:
-  type: ClusterIP
-  ports:
-    http: 80
-
-replicaCount: 1
-
-containerPorts:
-  http: 8080
-
-livenessProbe:
+ingress:
   enabled: true
-  path: /
-  port: http
-
-readinessProbe:
-  enabled: true
-  path: /
-  port: http
+  pathType: Prefix
+  hostname: agusjuli-hc.sctp-sandbox.com
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    external-dns.alpha.kubernetes.io/hostname: "agusjuli-hc.sctp-sandbox.com"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+  ingressClassName: "nginx"
+  tls: true
