@@ -1,0 +1,21 @@
+image:
+  registry: docker.io
+  repository: bitnami/nginx
+  tag: 1.25.3-debian-11-r20
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+
+replicaCount: 2
+
+resources:
+  requests:
+    memory: 128Mi
+    cpu: 250m
+  limits:
+    memory: 256Mi
+    cpu: 500m
