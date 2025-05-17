@@ -1024,6 +1024,13 @@ metrics:
   ##   limits:
   ##     cpu: 3
   ##     memory: 1024Mi
+  resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
   ##
   resources: {}
   ## Prometheus Operator ServiceMonitor configuration
