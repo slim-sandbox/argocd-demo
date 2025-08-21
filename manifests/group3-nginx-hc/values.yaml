@@ -4,10 +4,10 @@ commonLabels:
 ingress:
   enabled: true
   pathType: Prefix
-  hostname: nginx-hc.sctp-sandbox.com
+  hostname: group3-nginx-hc.sctp-sandbox.com
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    external-dns.alpha.kubernetes.io/hostname: "nginx-hc.sctp-sandbox.com"
+    external-dns.alpha.kubernetes.io/hostname: "group3-nginx-hc.sctp-sandbox.com"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
   ingressClassName: "nginx"
   tls: true
