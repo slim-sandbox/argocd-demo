@@ -18,7 +18,7 @@ spec:
     targetRevision: HEAD
     ref: values
   destination:
-    namespace: demo
+    namespace: group4-ns
     server: "https://kubernetes.default.svc"
   syncPolicy:
     syncOptions:
