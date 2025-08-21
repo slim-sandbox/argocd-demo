@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    path: manifests/nginx-webapp
+    path: guestbook
     repoURL: https://github.com/tor-wei/argocd-guestbook.git
     targetRevision: HEAD
   destination:
