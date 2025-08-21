@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-nginx-hc
+  name: zh-nginx-hc
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -18,7 +18,7 @@ spec:
     targetRevision: HEAD
     ref: values
   destination:
-    namespace: demo
+    namespace: zh-ns
     server: "https://kubernetes.default.svc"
   syncPolicy:
     syncOptions:
