@@ -3,7 +3,7 @@ commonLabels:
 
 replicaCount: 2
 service:
-  type: clusterIP
+  type: ClusterIP
   port: 80
 
 ingress:
