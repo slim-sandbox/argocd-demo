@@ -14,7 +14,7 @@ spec:
       releaseName: nginx-hc
       valueFiles:
       - $values/manifests/nginx-hc/values.yaml
-  - repoURL: https://github.com/slim-sandbox/argocd-demo.git
+  - repoURL: https://github.com/zacharykwek15/argocd-demo.git
     targetRevision: HEAD
     ref: values
   destination:
