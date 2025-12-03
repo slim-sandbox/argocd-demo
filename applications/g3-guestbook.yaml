@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: g3-nginx-webapp
+  name: g3-guestbook-webapp
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
