@@ -1,0 +1,101 @@
+# manifests/john-doe-nginx-hc/values.yaml
+# Based on NGINX Helm Chart v19.0.2
+
+# Global Docker Registry parameters
+global:
+  imageRegistry: ""
+  # imagePullSecrets: []
+  storageClass: ""
+  
+# NGINX parameters
+image:
+  registry: docker.io
+  repository: bitnami/nginx
+  tag: 1.25.3-debian-12-r7
+  pullPolicy: IfNotPresent
+  # pullSecrets: []
+
+# NGINX replica count
+replicaCount: 1
+
+# NGINX container ports
+containerPorts:
+  http: 8080
+  https: 8443
+
+# NGINX pod security context
+podSecurityContext:
+  enabled: true
+  fsGroup: 1001
+
+# NGINX container security context
+securityContext:
+  enabled: true
+  runAsUser: 1001
+  runAsNonRoot: true
+
+# NGINX service configuration
+service:
+  type: ClusterIP
+  port: 80
+  httpsPort: 443
+  nodePorts:
+    http: ""
+    https: ""
+  externalTrafficPolicy: Cluster
+  clusterIP: ""
+  loadBalancerIP: ""
+  loadBalancerSourceRanges: []
+  annotations: {}
+
+# NGINX ingress configuration
+ingress:
+  enabled: false
+  # Additional ingress configurations can be added as needed
+
+# NGINX resources configuration
+resources:
+  limits: {}
+  requests: {}
+  # Example:
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+# NGINX liveness and readiness probes
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 3
+  failureThreshold: 6
+  successThreshold: 1
+
+# Autoscaling configuration
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+# Custom NGINX server blocks
+serverBlock: |-
+  # Custom server configuration can be added here
+  # Example:
+  # server {
+  #   listen 8080;
+  #   location / {
+  #     return 200 "Hello from sree-nginx-hc";
+  #   }
+  # }
