@@ -19,7 +19,7 @@ spec:
    ref: values
  destination:
    namespace: marlon-ns
-   server: "https://kubernetes.default.svc"
+ server: "https://kubernetes.default.svc"
  syncPolicy:
    syncOptions:
    - CreateNamespace=true
