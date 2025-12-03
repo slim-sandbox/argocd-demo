@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+ name: jq-nginx-hc
+ finalizers:
+ - resources-finalizer.argocd.argoproj.io
+spec:
+ project: default
+ sources:
+ - repoURL: registry-1.docker.io/bitnamicharts
+   chart: nginx
+   targetRevision: 19.0.2
+   helm:
+     releaseName: nginx-hc
+     valueFiles:
+     - $values/manifests/jq-nginx-hc/values.yaml
+ - repoURL: https://github.com/slim-sandbox/argocd-demo.git
+   targetRevision: HEAD
+   ref: values
+ destination:
+   namespace: jq-ns
+   server: "https://kubernetes.default.svc"
+ syncPolicy:
+   syncOptions:
+   - CreateNamespace=true
+   automated:
+     prune: true
+     selfHeal: true
+
