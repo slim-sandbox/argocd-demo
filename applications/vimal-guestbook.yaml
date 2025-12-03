@@ -1,28 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
- name: vimal-nginx-hc
- finalizers:
- - resources-finalizer.argocd.argoproj.io
+  name: vimal-guessbook-webapp
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
- project: default
- sources:
- - repoURL: registry-1.docker.io/bitnamicharts
-   chart: nginx
-   targetRevision: 19.0.2
-   helm:
-     releaseName: nginx-hc
-     valueFiles:
-     - $values/manifests/vimal-nginx-hc/values.yaml
- - repoURL: https://github.com/vimalkaur1981/guestbook-app.git
-   targetRevision: HEAD
-   ref: values
- destination:
-   namespace: vimal-ns
-   server: "https://kubernetes.default.svc"
- syncPolicy:
-   syncOptions:
-   - CreateNamespace=true
-   automated:
-     prune: true
-     selfHeal: true
+  project: default
+  source:
+    path: guestbook
+    repoURL: https://github.com/vimalkaur1981/guestbook-app.git
+    targetRevision: HEAD
+  destination:
+    namespace: vimal-ns
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
