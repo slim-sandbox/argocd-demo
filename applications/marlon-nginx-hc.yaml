@@ -18,8 +18,8 @@ spec:
    targetRevision: HEAD
    ref: values
  destination:
-   namespace: ryan-ns
-   server: "https://kubernetes.default.svc"
+   namespace: marlon-ns
+ server: "https://kubernetes.default.svc"
  syncPolicy:
    syncOptions:
    - CreateNamespace=true
