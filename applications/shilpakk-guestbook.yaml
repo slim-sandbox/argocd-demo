@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shilpakk-nginx-webapp
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    path: guestbook
+    repoURL: https://github.com/shilparg/shilpakk-argocd-3-14.git
+    targetRevision: HEAD
+  destination:
+    namespace: shilpakk-ns
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
