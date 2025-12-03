@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    path: guestbook
+    path: .
     repoURL: https://github.com/al-fatah/argocd-demo-alfatah.git
     targetRevision: HEAD
   destination:
