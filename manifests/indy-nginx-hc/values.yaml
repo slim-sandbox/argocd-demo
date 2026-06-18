@@ -1,9 +1,5 @@
 replicaCount: 1
 
-image:
-  registry: docker.io
-  repository: bitnami/nginx
-
 service:
   type: ClusterIP
   ports:
