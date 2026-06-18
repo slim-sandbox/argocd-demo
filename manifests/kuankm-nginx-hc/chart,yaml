@@ -1,0 +1,28 @@
+apiVersion: v2
+name: nginx
+version: 19.0.2
+appVersion: 1.27.4
+description: Chart for the NGINX Open Source web server
+keywords:
+  - nginx
+  - webserver
+  - proxy
+  - http
+  - reverse-proxy
+home: https://github.com/bitnami/charts/tree/main/bitnami/nginx
+icon: https://bitnami.com/assets/stacks/nginx/img/nginx-stack-220x220.png
+sources:
+  - https://github.com/bitnami/charts
+  - https://nginx.org/
+maintainers:
+  - name: Broadcom
+    email: containers@broadcom.com
+dependencies:
+  - name: common
+    version: 2.x.x
+    repository: https://charts.bitnami.com/bitnami
+    tags:
+      - bitnami-common
+annotations:
+  category: Infrastructure
+  licenses: Apache-2.0

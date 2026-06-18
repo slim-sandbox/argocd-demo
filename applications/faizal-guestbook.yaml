@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-guestbook
+  name: faizal-nginx-webapp
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     path: guestbook
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    repoURL: https://github.com/mfaizalbe/ce12-activity-3-14.git
     targetRevision: HEAD
   destination:
-    namespace: demo-ns
+    namespace: faizal-ns
     server: https://kubernetes.default.svc
   syncPolicy:
     syncOptions:
