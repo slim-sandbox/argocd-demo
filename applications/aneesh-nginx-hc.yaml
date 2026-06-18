@@ -1,24 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aneesh-nginx-hc # <-- change from demo-nginx-hc
+  name: aneesh-guestbook
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  sources:
-    - repoURL: registry-1.docker.io/bitnamicharts
-      chart: nginx
-      targetRevision: 19.0.2
-      helm:
-        releaseName: nginx-hc
-        valueFiles:
-          - $values/manifests/aneesh-nginx-hc/values.yaml # <-- point to your values.yaml
-    - repoURL: https://github.com/slim-sandbox/argocd-demo.git
-      targetRevision: HEAD
-      ref: values
+  source:
+    repoURL: https://github.com/Aneissh91/guestbook.git # <-- your own repo with guestbook manifests
+    targetRevision: main
+    path: .
   destination:
-    namespace: aneesh-ns # <-- change from demo-ns
+    namespace: aneesh-ns
     server: "https://kubernetes.default.svc"
   syncPolicy:
     syncOptions:

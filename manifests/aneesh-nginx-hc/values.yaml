@@ -1,3 +1,4 @@
+# values.yaml for NGINX Helm chart v19.0.2
 replicaCount: 2
 
 image:
@@ -6,5 +7,31 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 80
+
+ingress:
+  enabled: true
+  hostname: aneesh-nginx.local
+  path: /
+  tls: false
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+livenessProbe:
+  enabled: true
+  path: /
+  initialDelaySeconds: 30
+  timeoutSeconds: 5
+
+readinessProbe:
+  enabled: true
+  path: /
+  initialDelaySeconds: 5
+  timeoutSeconds: 3
