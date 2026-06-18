@@ -3,5 +3,4 @@ kind: ConfigMap
 metadata:
   name: http-hello-cm
 data:
-  altGreeting: "Good Morning!"
-  enableRisky: "false"
+  message: "Good Morning!"

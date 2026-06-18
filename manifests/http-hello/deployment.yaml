@@ -14,20 +14,13 @@ spec:
     spec:
       containers:
       - name: hello
-        image: monopole/hello:1
-        command: ["/hello",
-                  "--port=8080",
-                  "--enableRiskyFeature=$(ENABLE_RISKY)"]
+        image: alpine:latest
+        command: ["sh", "-c", "echo Hello ${MESSAGE}! && sleep 3600"]
         ports:
         - containerPort: 8080
         env:
-        - name: ALT_GREETING
+        - name: MESSAGE
           valueFrom:
             configMapKeyRef:
               name: http-hello-cm
-              key: altGreeting
-        - name: ENABLE_RISKY
-          valueFrom:
-            configMapKeyRef:
-              name: http-hello-cm
-              key: enableRisky
+              key: message
