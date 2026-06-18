@@ -13,3 +13,6 @@ resourcesPreset: nano
 
 ingress:
   enabled: false
+
+cloneStaticSiteFromGit:
+  enabled: false
