@@ -7,9 +7,9 @@ metadata:
 spec:
   project: default
   source:
-    path: guestbook
-    repoURL: https://github.com/argoproj/argocd-example-apps.git
-    targetRevision: HEAD
+    repoURL: https://github.com/oliviasyhspm/CE12M3L14-guestbook-manifests.git
+    targetRevision: main
+    path: .
   destination:
     namespace: olivia-guestbook-ns
     server: https://kubernetes.default.svc
