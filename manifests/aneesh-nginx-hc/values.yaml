@@ -1,0 +1,10 @@
+replicaCount: 2
+
+image:
+  repository: bitnami/nginx
+  tag: 19.0.2
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
