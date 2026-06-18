@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
- name: olivia-nginx-hc
+ name: kuankm-nginx-hc
  finalizers:
  - resources-finalizer.argocd.argoproj.io
 spec:
@@ -13,12 +13,12 @@ spec:
    helm:
      releaseName: nginx-hc
      valueFiles:
-     - $values/manifests/olivia-nginx-hc/values.yaml
+     - $values/manifests/kuankm-nginx-hc/values.yaml
  - repoURL: https://github.com/slim-sandbox/argocd-demo.git
    targetRevision: HEAD
    ref: values
  destination:
-   namespace: olivia-ns
+   namespace: kuankm-ns
    server: "https://kubernetes.default.svc"
  syncPolicy:
    syncOptions:
