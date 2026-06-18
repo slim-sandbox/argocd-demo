@@ -9,7 +9,7 @@ spec:
   sources:
     - repoURL: registry-1.docker.io/bitnamicharts
       chart: nginx
-      targetRevision: 19.0.2
+      targetRevision: 1.27.4
       helm:
         releaseName: nginx-hc
         valueFiles:
