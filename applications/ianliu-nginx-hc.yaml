@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: szekong-nginx-hc
+  name: ianliu-nginx-hc
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -9,16 +9,16 @@ spec:
   sources:
     - repoURL: registry-1.docker.io/bitnamicharts
       chart: nginx
-      targetRevision: 1.27.4
+      targetRevision: 19.0.2
       helm:
         releaseName: nginx-hc
         valueFiles:
-          - $values/manifests/szekong-nginx-hc/values.yaml
+          - $values/manifests/ianliu-nginx-hc/values.yaml
     - repoURL: https://github.com/slim-sandbox/argocd-demo.git
       targetRevision: HEAD
       ref: values
   destination:
-    namespace: szekong-ns
+    namespace: ianliu-ns
     server: "https://kubernetes.default.svc"
   syncPolicy:
     syncOptions:
