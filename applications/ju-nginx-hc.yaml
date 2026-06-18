@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ju-nginx-hc
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    # Source 1: The upstream Bitnami Helm Chart
+    - repoURL: registry-1.docker.io/bitnamicharts
+      chart: nginx
+      targetRevision: 19.0.2
+      helm:
+        releaseName: nginx-hc
+        valueFiles:
+          - $values/manifests/ju-nginx-hc/values.yaml
+    # Source 2: Your git repository containing the local values file
+    - repoURL: https://github.com/slim-sandbox/argocd-demo.git
+      targetRevision: main  # Changed from HEAD to main as requested
+      ref: values
+  destination:
+    namespace: ju-ns      # Deploys into your own namespace
+    server: "https://kubernetes.default.svc"
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
