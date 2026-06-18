@@ -1,5 +1,10 @@
 replicaCount: 1
 
+image:
+  registry: docker.io
+  repository: bitnamilegacy/nginx
+  tag: 1.27.4-debian-12-r6  
+
 service:
   type: ClusterIP
   ports:
