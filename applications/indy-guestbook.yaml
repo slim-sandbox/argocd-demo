@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/lostsockpuppet/argo-cicd.git
+    repoURL: https://github.com/slim-sandbox/argocd-demo.git
     targetRevision: main
     path: manifest
   destination:
