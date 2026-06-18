@@ -1,8 +1,12 @@
 commonLabels:
   label-for: faizal-nginx-label
 
-replicaCount: 3
+replicaCount: 1
 
+image:
+  repository: bitnami/nginx
+  tag: latest
+  
 ingress:
   enabled: true
   pathType: Prefix
