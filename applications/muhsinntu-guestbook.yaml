@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-guestbook
+  name: muhsinntu-guestbook
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
