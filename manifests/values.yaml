@@ -10,7 +10,7 @@
 ## @param global.imagePullSecrets Global Docker registry secret names as an array
 ##
 global:
-  imageRegistry: ""
+  imageRegistry: "bitnamilegacy/nginx"
   ## E.g.
   ## imagePullSecrets:
   ##   - myRegistryKeySecretName
