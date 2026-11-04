@@ -1,13 +1,22 @@
-   replicaCount: 1
+global:
+  security:
+    allowInsecureImages: true
 
-   service:
-     type: ClusterIP
-     port: 80
+image:
+  registry: docker.io
+  repository: bitnamilegacy/nginx
+  tag: 1.27.4-debian-12-r6
 
-   resources:
-     requests:
-       cpu: 50m
-       memory: 64Mi
-     limits:
-       cpu: 100m
-       memory: 128Mi
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
