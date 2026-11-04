@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+ name: jeffery-nginx-hc
+ finalizers:
+ - resources-finalizer.argocd.argoproj.io
+spec:
+ project: default
+ sources:
+ - repoURL: registry-1.docker.io/bitnamicharts
+   chart: nginx
+   targetRevision: 19.0.2
+    helm:
+      releaseName: jeffery-nginx-hc
+      values: |
+        replicaCount: 2
+  
+        image:
+          registry: registry-1.docker.io
+          repository: bitnami/nginx
+          tag: 1.27.4-debian-12-r6
+  
+        service:
+          type: ClusterIP
+          port: 80
+  
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
