@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
- name: jeffery-nginx-hc
+ name: jeffrey-nginx-hc
  finalizers:
  - resources-finalizer.argocd.argoproj.io
 spec:
