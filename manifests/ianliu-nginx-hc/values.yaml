@@ -1,7 +1,0 @@
-service:
-  type: ClusterIP
-
-replicaCount: 1
-
-image:
-  tag: latest
