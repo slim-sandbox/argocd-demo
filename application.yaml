@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jack-app
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/jacksonlskit/argocd-demo.git"
+    targetRevision: main
+    path: <path_to_manifest_directory> (depends on which folder it's in)
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: jack-ns
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+
