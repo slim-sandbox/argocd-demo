@@ -11,6 +11,10 @@ service:
   ports:
     http: 80
 
+# Explicitly disable TLS to prevent mounting nginx-hc-tls
+tls:
+  enabled: false
+
 resources:
   limits:
     cpu: 250m
