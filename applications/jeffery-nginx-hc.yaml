@@ -10,24 +10,19 @@ spec:
  - repoURL: registry-1.docker.io/bitnamicharts
    chart: nginx
    targetRevision: 19.0.2
-    helm:
-      releaseName: jeffery-nginx-hc
-      values: |
-        replicaCount: 2
-  
-        image:
-          registry: registry-1.docker.io
-          repository: bitnami/nginx
-          tag: 1.27.4-debian-12-r6
-  
-        service:
-          type: ClusterIP
-          port: 80
-  
-        resources:
-          limits:
-            cpu: 100m
-            memory: 128Mi
-          requests:
-            cpu: 50m
-            memory: 64Mi
+   helm:
+     releaseName: nginx-hc
+     valueFiles:
+     - $values/manifests/jeffery-nginx-hc/values.yaml
+ - repoURL: https://github.com/slim-sandbox/argocd-demo.git
+   targetRevision: HEAD
+   ref: values
+ destination:
+   namespace: jeffery-ns
+   server: "https://kubernetes.default.svc"
+ syncPolicy:
+   syncOptions:
+   - CreateNamespace=true
+   automated:
+     prune: true
+     selfHeal: true
