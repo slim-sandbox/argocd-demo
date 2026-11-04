@@ -1,0 +1,20 @@
+# manifests/<your-name>-nginx-hc/values.yaml
+
+replicaCount: 2
+
+image:
+  registry: registry-1.docker.io
+  repository: bitnami/nginx
+  tag: 1.27.4-debian-12-r6
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
