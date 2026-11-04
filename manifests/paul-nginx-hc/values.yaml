@@ -1,0 +1,18 @@
+global:
+     security:
+       allowInsecureImages: true      # required when overriding the bitnami image
+
+   replicaCount: 1
+
+   image:
+     registry: docker.io
+     repository: bitnamilegacy/nginx  # bitnami/nginx tags for this chart were removed
+     tag: 1.27.4-debian-12-r6
+
+   service:
+     type: ClusterIP                  # default is LoadBalancer, which would create an AWS LB per student
+
+   resourcesPreset: nano
+
+   ingress:
+     enabled: false
