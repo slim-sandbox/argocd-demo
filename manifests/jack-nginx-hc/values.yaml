@@ -1,0 +1,13 @@
+replicaCount: 2
+
+image:
+  repository: nginx
+  tag: 19.0.2
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+serviceAccount:
+  create: false
