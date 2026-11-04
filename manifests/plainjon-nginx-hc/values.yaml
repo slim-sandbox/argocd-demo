@@ -1,0 +1,9 @@
+replicaCount: 2
+
+service:
+  type: ClusterIP
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
