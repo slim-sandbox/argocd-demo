@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shilram-guestbook
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    path: guestbook
+    repoURL: https://github.com/shil5ram/argocd-guestbook-manifests.git
+    targetRevision: HEAD
+  destination:
+    namespace: shilram-ns
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
