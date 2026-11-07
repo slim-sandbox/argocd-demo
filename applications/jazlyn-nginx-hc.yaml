@@ -1,0 +1,32 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jazlyn-nginx-hc
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: registry-1.docker.io/bitnamicharts
+      chart: nginx
+      targetRevision: 19.0.2
+      helm:
+        releaseName: nginx-hc
+        valueFiles:
+          - $values/manifests/jazlyn-nginx-hc/values.yaml
+
+    - repoURL: https://github.com/jazlyncyt/argocd-demo.git
+      targetRevision: main
+      ref: values
+
+  destination:
+    namespace: jazlyn-ns
+    server: https://kubernetes.default.svc
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
